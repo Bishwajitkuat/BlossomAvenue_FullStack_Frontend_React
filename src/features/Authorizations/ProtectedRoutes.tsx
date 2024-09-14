@@ -1,7 +1,14 @@
-import { Outlet } from "react-router-dom";
-
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useGetAuthFromLocalStorage } from "../../hooks/Auth/useGetAuthFromLocalStorage";
 const ProtectedRoutes = () => {
-  return <Outlet />;
+  const { userAuth } = useGetAuthFromLocalStorage();
+  const location = useLocation();
+  console.log(userAuth);
+  return userAuth?.isAuthenticated ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoutes;
