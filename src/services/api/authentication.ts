@@ -15,3 +15,16 @@ export const getAuth = async (credentials: {
   );
   return response.data;
 };
+
+export const getRefreshToken = async (
+  accessToken: string
+): Promise<LoginResponseDto> => {
+  const response = await axiosPublic.get("/Auth/refreshToken", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    withCredentials: true,
+  });
+  return response.data;
+};
