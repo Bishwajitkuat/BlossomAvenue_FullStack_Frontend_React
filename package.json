@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.56.1"
+    "@tanstack/eslint-plugin-query": "^5.56.1",
+    "tailwindcss": "^3.4.11"
   }
 }
