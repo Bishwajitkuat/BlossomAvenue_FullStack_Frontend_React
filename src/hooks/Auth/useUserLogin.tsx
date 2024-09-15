@@ -6,7 +6,7 @@ import { getAuth } from "../../services/api/authentication";
 const useUserLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/user";
   const { setToLocalStorage } = useSetAuthToLocalStorage();
 
   const { isPending: isLoading, mutate: login } = useMutation({
