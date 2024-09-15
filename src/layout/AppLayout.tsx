@@ -4,11 +4,13 @@ import Footer from "./Footer";
 
 const AppLayout = () => {
   return (
-    <main>
+    <div className="flex h-screen w-screen min-w-[360px] flex-col">
       <Header />
-      <Outlet />
+      <main className="flex-1 grow overflow-y-auto bg-gradient-to-br from-zinc-400 to-zinc-900">
+        <Outlet />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 
