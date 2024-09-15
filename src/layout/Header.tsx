@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useGetAuthFromLocalStorage } from "../hooks/Auth/useGetAuthFromLocalStorage";
 import useUserLogout from "../hooks/Auth/useUserLogout";
+import Loader from "../components/ui/Loader";
 
 const Header = () => {
   const { userAuth } = useGetAuthFromLocalStorage();
   const { isLoading, logout } = useUserLogout();
 
-  if (isLoading) <h1>Loading.....</h1>;
+  if (isLoading) <Loader />;
   return (
     <header className=" bg-pink-300/80 p-4 md:px-[5rem] md:pb-2 md:pt-6">
       <nav className="flex flex-nowrap items-center justify-between ">

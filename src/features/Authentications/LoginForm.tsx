@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAuth from "../../hooks/Auth/useUserLogin";
+import Loader from "../../components/ui/Loader";
 
 const LoginForm = () => {
   const { isLoading, login } = useAuth();
@@ -11,7 +12,7 @@ const LoginForm = () => {
     login({ username, password });
   };
 
-  if (isLoading) return <h1>Loading......</h1>;
+  if (isLoading) return <Loader />;
 
   return (
     <div>

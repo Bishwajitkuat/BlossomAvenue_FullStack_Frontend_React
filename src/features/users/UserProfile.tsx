@@ -1,9 +1,10 @@
 import React from "react";
 import useGetUserProfile from "../../hooks/User/useGetUserProfile";
+import Loader from "../../components/ui/Loader";
 
 function UserProfile() {
   const { isLoading, userProfile, isError, error } = useGetUserProfile();
-  if (isLoading) return <h1>Loading.....</h1>;
+  if (isLoading) return <Loader />;
   if (isError) return <h1>{error?.message}</h1>;
   console.log(userProfile);
   return (
