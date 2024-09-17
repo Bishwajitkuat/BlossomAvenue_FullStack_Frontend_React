@@ -3,7 +3,7 @@ import AllProducts from "../features/Products/AllProducts";
 import useGetProducts from "../hooks/products/useGetProducts";
 import toast from "react-hot-toast";
 import Loader from "../components/ui/Loader";
-import Pagination from "../features/Products/Pagination";
+import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 

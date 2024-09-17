@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { PaginationPropType } from "../../utils/types/pagination";
+import { PaginationPropType } from "../utils/types/pagination";
 
 function Pagination({
   currentPage,
