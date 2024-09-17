@@ -60,3 +60,10 @@ export interface ProductReviewCreateDto {
   review: string;
   star: string;
 }
+
+export interface Category {
+  categoryId: string;
+  categoryName: string;
+  parentId: string | null;
+  productCategories: null;
+}
