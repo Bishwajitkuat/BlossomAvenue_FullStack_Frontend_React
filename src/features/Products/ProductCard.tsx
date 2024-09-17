@@ -1,4 +1,5 @@
 import BankNoteIcon from "../../components/ui/icons/BankNoteIcon";
+import StarIcon from "../../components/ui/icons/StarIcon";
 import StockIcon from "../../components/ui/icons/StockIcon";
 import { GetAllProductReadDto } from "../../utils/types/product";
 import { useNavigate } from "react-router-dom";
@@ -17,20 +18,26 @@ function ProductCard({ product }: { product: GetAllProductReadDto }) {
           src={product.imageUrl}
           alt={product.title}
         />
-        <h2 className="text-center text-xl font-semibold uppercase tracking-widest">
+        <h2 className="text-center grow text-xl font-semibold uppercase tracking-widest">
           {product.title}
         </h2>
         <div className="flex items-center gap-2 px-2">
+          <StarIcon />
+          <p className="text-2xl font-semibold tracking-wider">
+            Rating: {product.avgStar ? product.avgStar.toFixed(1) : 0}
+          </p>
+        </div>
+        <div className="flex items-center gap-2 px-2">
           <BankNoteIcon />
           <p className="text-2xl font-semibold tracking-wider">
-            <span>Price</span> {product.minPrice.toFixed(2)}€
+            <span>Price: </span> {product.minPrice.toFixed(2)}€
           </p>
         </div>
         <div className="flex items-center gap-2 px-2">
           <StockIcon />
           {product.inventory < 1 ? (
             <p className="text-xl font-semibold uppercase text-red-500">
-              <span>Stock</span> Sold out
+              <span>Stock: </span> Sold out
             </p>
           ) : (
             <p className="text-2xl font-semibold tracking-wider">

@@ -10,7 +10,7 @@ function AllProducts({
   if (products === undefined || products.length < 1)
     return <NotAvailable item={"products"} />;
   return (
-    <ul className="grid justify-center gap-8 p-4 sm:grid-cols-2 md:grid-cols-3 md:p-[5rem]">
+    <ul className="grid justify-center gap-8 grid-cols-3">
       {Array.isArray(products) &&
         products.map((p) => (
           <ProductCard key={p.productId} product={p}></ProductCard>
