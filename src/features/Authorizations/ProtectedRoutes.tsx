@@ -3,7 +3,6 @@ import { useGetAuthFromLocalStorage } from "../../hooks/Auth/useGetAuthFromLocal
 const ProtectedRoutes = () => {
   const { userAuth } = useGetAuthFromLocalStorage();
   const location = useLocation();
-  console.log(userAuth);
   return userAuth?.isAuthenticated ? (
     <Outlet />
   ) : (
