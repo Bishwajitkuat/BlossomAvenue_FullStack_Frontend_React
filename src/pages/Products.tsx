@@ -6,6 +6,7 @@ import Loader from "../components/ui/Loader";
 import Pagination from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
+import FilterProduct from "../features/Products/FilterProduct";
 
 const Products = () => {
   const queryClient = useQueryClient();
@@ -20,6 +21,9 @@ const Products = () => {
   if (isProductsLoading) return <Loader />;
   return (
     <div className="h-full flex flex-col max-w-[1280px] mx-auto">
+      <div>
+        <FilterProduct />
+      </div>
       <div className="flex-grow">
         <AllProducts products={paginatedProducts?.items} />
       </div>
