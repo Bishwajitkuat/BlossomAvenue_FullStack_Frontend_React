@@ -7,10 +7,10 @@ const Header = () => {
   const { userAuth } = useGetAuthFromLocalStorage();
   const { isLoading, logout } = useUserLogout();
 
-  if (isLoading) <Loader />;
+  if (isLoading) return <Loader />;
   return (
-    <header className=" bg-pink-300/80 p-4 md:px-[5rem] md:pb-2 md:pt-6">
-      <nav className="flex flex-nowrap items-center justify-between ">
+    <header className=" bg-pink-300/80 min-h-[8rem] p-4 md:px-[5rem] md:pb-2 md:pt-6">
+      <nav className="h-full flex flex-nowrap items-center justify-between ">
         <Link className="flex flex-nowrap items-center" to="/">
           <span className="text-xl font-light tracking-widest md:text-[2rem]">
             Blossom Avenue
