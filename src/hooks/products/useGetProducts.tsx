@@ -14,7 +14,30 @@ function useGetProducts() {
     : "10";
   const pageNo = searchParams.get("PageNo") ? searchParams.get("PageNo") : "1";
 
-  const routeString = `/products?PageSize=${pageSize}&PageNo=${pageNo}`;
+  const orderWith = searchParams.get("ProductOrderWith")
+    ? searchParams.get("ProductOrderWith")
+    : null;
+  const orderBy = searchParams.get("OrderBy")
+    ? searchParams.get("OrderBy")
+    : null;
+  const categoryId = searchParams.get("CategoryId")
+    ? searchParams.get("CategoryId")
+    : null;
+  const search = searchParams.get("Search");
+
+  let routeString = `/products?PageSize=${pageSize}&PageNo=${pageNo}`;
+  if (search) {
+    routeString = `${routeString}&Search=${search}`;
+  }
+  if (categoryId) {
+    routeString = `${routeString}&CategoryId=${categoryId}`;
+  }
+  if (orderWith) {
+    routeString = `${routeString}&ProductOrderWith=${orderWith}`;
+  }
+  if (orderBy) {
+    routeString = `${routeString}&OrderBy=${orderBy}`;
+  }
 
   const getProducts = async (): Promise<
     PaginatedResponse<GetAllProductReadDto>
