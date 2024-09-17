@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function useUserLogout() {
   const navigate = useNavigate();
@@ -13,11 +14,11 @@ function useUserLogout() {
   const { isPending: isLoading, mutate: logout } = useMutation({
     mutationFn: postLogout,
     onSuccess: (data) => {
-      console.log(data.data);
+      toast.success(data.data);
       localStorage.removeItem("blossom_avenue_user_auth");
       navigate("/login");
     },
-    onError: (err) => console.log(err.message),
+    onError: (err) => toast.error(err.message),
   });
   return { isLoading, logout };
 }
