@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useGetAuthFromLocalStorage } from "../hooks/Auth/useGetAuthFromLocalStorage";
 import useUserLogout from "../hooks/Auth/useUserLogout";
 import Loader from "../components/ui/Loader";
+import CartIcon from "../components/ui/icons/CartIcon";
+import CartIconWithItemNumber from "../features/Cart/CartIconWithItemNumber";
 
 const Header = () => {
   const { userAuth } = useGetAuthFromLocalStorage();
@@ -24,7 +26,9 @@ const Header = () => {
             <Link to="/user">Profile</Link>
           </li>
           <li className="flex items-center justify-center">
-            <Link to="/cart">Cart</Link>
+            <Link to="/user/cart">
+              {userAuth ? <CartIconWithItemNumber /> : <CartIcon />}
+            </Link>
           </li>
           {!userAuth?.isAuthenticated && (
             <li className="flex items-center justify-center">
