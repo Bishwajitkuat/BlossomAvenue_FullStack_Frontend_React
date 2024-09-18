@@ -43,12 +43,11 @@ function CartDetail() {
           >
             Clear Cart
           </button>
-          <button
-            className="min-h-[3rem] rounded-xl bg-pink-200 px-4 py-2  uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in  hover:bg-pink-300 hover:shadow-pink-500/50"
-            // onClick={handleCheckout}
-          >
-            Checkout
-          </button>
+          <Link to={"/user/createOrder"}>
+            <button className="min-h-[3rem] rounded-xl bg-pink-200 px-4 py-2  uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in  hover:bg-pink-300 hover:shadow-pink-500/50">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>
