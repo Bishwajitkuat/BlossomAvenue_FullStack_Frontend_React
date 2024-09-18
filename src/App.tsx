@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
+import CreateOrderPage from "./pages/CreateOrderPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="user" element={<ProtectedRoutes />}>
               <Route path="" element={<Profile />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="createOrder" element={<CreateOrderPage />} />
               <Route path="orders" element={<h1>not implemented yet</h1>} />
               <Route
                 path="orders/:orderId"
