@@ -4,7 +4,7 @@ export default function NoItemInCart() {
   return (
     <div className="mb-12 text-xl w-full rounded-md bg-slate-100 px-4 py-8 text-center shadow-md shadow-zinc-200 duration-150 ease-in ">
       <h2 className="mb-8 text-red-500">
-        You have no item in the cart. Please visit menu products to add product
+        You have no item in the cart. Please visit products page to add product
         to cart!
       </h2>
       <Link
