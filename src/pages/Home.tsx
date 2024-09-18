@@ -1,3 +1,5 @@
+import LandingBanner from "../features/Home/LandingBanner";
+
 export const Home = () => {
-  return <div>Home</div>;
+  return <LandingBanner />;
 };
