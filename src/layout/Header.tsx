@@ -23,7 +23,7 @@ const Header = () => {
             <Link to="/products">Products</Link>
           </li>
           <li className="flex items-center justify-center">
-            <Link to="/user">Profile</Link>
+            <Link to="/user">Dashboard</Link>
           </li>
           <li className="flex items-center justify-center">
             <Link to="/user/cart">
