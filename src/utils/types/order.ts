@@ -46,3 +46,12 @@ export interface ReadOrderItemDto {
   title: string;
   imageUrl: string;
 }
+
+export interface ReadOrderDto {
+  orderId: string;
+  createdAt: string | null;
+  totalAmount: number;
+  orderStatus: string;
+  shippingAddress: ReadAddressDetailDto;
+  orderItems: ReadOrderItemDto[];
+}

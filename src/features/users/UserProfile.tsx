@@ -9,9 +9,7 @@ function UserProfile() {
   if (isError && error) return <Error message={error?.message} />;
   return (
     <div className="w-full h-full py-8 px-8 ">
-      <h1 className="text-center text-2xl tracking-widest font-semibold pb-8">
-        Profile
-      </h1>
+      <h1 className="text-[2.5rem] text-center tracking-widest">Profile</h1>
       <h2 className=" text-xl tracking-widest font-semibold pb-8">
         Basic information
       </h2>

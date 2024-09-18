@@ -15,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import CreateOrderPage from "./pages/CreateOrderPage";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
+import Orders from "./pages/Orders";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,7 +41,7 @@ const App = () => {
                 <Route path="" element={<Profile />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="createOrder" element={<CreateOrderPage />} />
-                <Route path="orders" element={<h1>not implemented yet</h1>} />
+                <Route path="orders" element={<Orders />} />
                 <Route
                   path="orders/:orderId"
                   element={<h1>not implemented yet</h1>}

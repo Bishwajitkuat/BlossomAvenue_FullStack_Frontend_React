@@ -18,7 +18,7 @@ function useAddOrder() {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
       toast.success("The order is placed successfully!");
-      navigate(`/user/orders/${data.orderId}`);
+      navigate(`/user/orders`);
     },
     onError: (err) => toast.error(err.message),
   });
