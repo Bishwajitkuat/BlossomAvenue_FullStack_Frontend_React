@@ -67,3 +67,30 @@ export interface Category {
   parentId: string | null;
   productCategories: null;
 }
+
+export interface CreateUpdateProductCategoryDto {
+  productCategoryId?: string;
+  categoryId: string;
+  productId?: string;
+}
+
+export interface ProductCreateUpdateImage {
+  imageId?: string;
+  imageUrl: string;
+  productId?: string;
+}
+
+export interface ProductCreateUpdateVariation {
+  variationId?: string;
+  variationName: string;
+  price: string;
+  inventory: string;
+  productId?: string;
+}
+export interface CreateProductDto {
+  title: string;
+  description: string;
+  images: ProductCreateUpdateImage[];
+  variations: ProductCreateUpdateVariation[];
+  productCategories: CreateUpdateProductCategoryDto[];
+}
