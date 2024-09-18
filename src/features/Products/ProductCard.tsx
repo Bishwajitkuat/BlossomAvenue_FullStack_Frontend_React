@@ -12,8 +12,8 @@ function ProductCard({ product }: { product: GetAllProductReadDto }) {
         <img
           className={
             product.inventory < 1
-              ? " shadow-md shadow-zinc-400 grayscale"
-              : " shadow-md shadow-zinc-400"
+              ? " shadow-md shadow-zinc-400 grayscale w-full h-64 object-cover"
+              : " shadow-md shadow-zinc-400 w-full h-64 object-cover "
           }
           src={product.imageUrl}
           alt={product.title}
