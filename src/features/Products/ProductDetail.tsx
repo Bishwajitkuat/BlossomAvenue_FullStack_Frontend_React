@@ -8,16 +8,31 @@ import VariationsSelector from "./VariationsSelector";
 import ProductReviews from "./ProductReviews";
 import AddProductReview from "./AddProductReview";
 import useAddProductReview from "../../hooks/products/useAddProductReview";
+import useAddToCart from "../../hooks/Cart/useAddToCart";
 
 function ProductDetail() {
   const { isProductLoading, isError, error, product } = useGetProductById();
+  const { isAddToCartLoading, addToCart } = useAddToCart();
   const [selectedVariation, setSelectedVariation] = useState<string>();
   const { isReviewLoading, addNewReview } = useAddProductReview();
   const [showReviewForm, setShowReviewForm] = useState<boolean>(false);
+
+  const handelAddToCart = () => {
+    if (!selectedVariation || !product?.productId) {
+      toast.error("Please select a variation to add the product ot cart!");
+    } else {
+      addToCart({
+        productId: product.productId,
+        variationId: selectedVariation,
+        quantity: 1,
+      });
+    }
+  };
+
   useEffect(() => {
     if (isError && error) toast.error(error.message);
   }, [isError, error, isReviewLoading, addNewReview]);
-  if (isProductLoading) return <Loader />;
+  if (isProductLoading || isAddToCartLoading) return <Loader />;
   if (product === undefined || null) return <NotAvailable item={"product"} />;
   return (
     <div className="py-12 px-12">
@@ -44,7 +59,10 @@ function ProductDetail() {
             selectedVariation={selectedVariation}
             setSelectedVariation={setSelectedVariation}
           />
-          <button className="w-full  rounded-b-md bg-pink-300 px-12 py-3 font-semibold uppercase tracking-widest shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-500 ">
+          <button
+            onClick={handelAddToCart}
+            className="w-full  rounded-b-md bg-pink-300 px-12 py-3 font-semibold uppercase tracking-widest shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-500 "
+          >
             ADD TO CART
           </button>
         </div>
