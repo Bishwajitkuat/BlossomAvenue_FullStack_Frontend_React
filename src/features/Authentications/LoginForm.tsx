@@ -6,8 +6,8 @@ import LockIcon from "../../components/ui/icons/LockIcon";
 
 const LoginForm = () => {
   const { isLoading, login } = useAuth();
-  const [username, setUsername] = useState<string>("admin1@test.com");
-  const [password, setPassword] = useState<string>("Abcd1234!");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,6 +70,26 @@ const LoginForm = () => {
             Login
           </button>
         </form>
+      </div>
+      <div className="w-[50%] mx-auto mt-[2rem] text-[1.2rem] gap-8 p-12 flex flex-col border-2 border-gray-700 border-dotted">
+        <h2 className="text-center text-[1.5rem] font-bold">
+          Test users credentials
+        </h2>
+        <div>
+          <h3>Admin</h3>
+          <p>User Name: admin1@test.com</p>
+          <p>Password: Abcd1234!</p>
+        </div>
+        <div>
+          <h3>Employee</h3>
+          <p>User Name: emp1@test.com</p>
+          <p>Password: Abcd1234!</p>
+        </div>
+        <div>
+          <h3>Customer</h3>
+          <p>User Name: cus1@test.com</p>
+          <p>Password: Abcd1234!</p>
+        </div>
       </div>
     </div>
   );
