@@ -21,7 +21,7 @@ function useGetLatestProducts() {
     isError,
     error,
   } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", "latestThree"],
     queryFn: getProducts,
   });
 
