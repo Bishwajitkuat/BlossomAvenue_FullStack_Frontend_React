@@ -13,6 +13,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
 import CreateOrderPage from "./pages/CreateOrderPage";
+import Dashboard from "./pages/Dashboard";
+import CreateProduct from "./pages/CreateProduct";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,42 +36,41 @@ const App = () => {
             <Route path="products" element={<Products />} />
             <Route path="products/:productId" element={<Product />} />
             <Route path="user" element={<ProtectedRoutes />}>
-              <Route path="" element={<Profile />} />
-              <Route path="cart" element={<Cart />} />
-              <Route path="createOrder" element={<CreateOrderPage />} />
-              <Route path="orders" element={<h1>not implemented yet</h1>} />
-              <Route
-                path="orders/:orderId"
-                element={<h1>not implemented yet</h1>}
-              />
-              <Route
-                path="orders/create"
-                element={<h1>not implemented yet</h1>}
-              />
-              <Route path="employee" element={<EmployeeAdminProtectedRoutes />}>
+              <Route element={<Dashboard />}>
+                <Route path="" element={<Profile />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="createOrder" element={<CreateOrderPage />} />
+                <Route path="orders" element={<h1>not implemented yet</h1>} />
                 <Route
-                  path=""
-                  element={<h1>Employee dashboard not implemented yet</h1>}
-                />
-                <Route
-                  path="products/create"
+                  path="orders/:orderId"
                   element={<h1>not implemented yet</h1>}
                 />
                 <Route
-                  path="products/update/:productId"
+                  path="orders/create"
                   element={<h1>not implemented yet</h1>}
                 />
-              </Route>
-              <Route path="admin" element={<AdminProtectedRoutes />}>
                 <Route
-                  path=""
-                  element={<h1>Admin dashboard not implemented yet</h1>}
-                />
-                <Route path="users" element={<h1>not implemented yet</h1>} />
-                <Route
-                  path="users/update/:userId"
-                  element={<h1>not implemented yet</h1>}
-                />
+                  path="employee"
+                  element={<EmployeeAdminProtectedRoutes />}
+                >
+                  <Route path="" element={<h1>not implemented yet</h1>} />
+                  <Route path="products/create" element={<CreateProduct />} />
+                  <Route
+                    path="products/update/:productId"
+                    element={<h1>not implemented yet</h1>}
+                  />
+                </Route>
+                <Route path="admin" element={<AdminProtectedRoutes />}>
+                  <Route
+                    path=""
+                    element={<h1>Admin dashboard not implemented yet</h1>}
+                  />
+                  <Route path="users" element={<h1>not implemented yet</h1>} />
+                  <Route
+                    path="users/update/:userId"
+                    element={<h1>not implemented yet</h1>}
+                  />
+                </Route>
               </Route>
             </Route>
           </Route>
