@@ -16,6 +16,8 @@ import CreateOrderPage from "./pages/CreateOrderPage";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
 import Orders from "./pages/Orders";
+import AdminProducts from "./features/Products/AdminProducts";
+import UpdateProduct from "./features/Products/UpdateProduct";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,11 +56,11 @@ const App = () => {
                   path="employee"
                   element={<EmployeeAdminProtectedRoutes />}
                 >
-                  <Route path="" element={<h1>not implemented yet</h1>} />
+                  <Route path="products" element={<AdminProducts />} />
                   <Route path="products/create" element={<CreateProduct />} />
                   <Route
                     path="products/update/:productId"
-                    element={<h1>not implemented yet</h1>}
+                    element={<UpdateProduct />}
                   />
                 </Route>
                 <Route path="admin" element={<AdminProtectedRoutes />}>

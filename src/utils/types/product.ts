@@ -83,8 +83,8 @@ export interface ProductCreateUpdateImage {
 export interface ProductCreateUpdateVariation {
   variationId?: string;
   variationName: string;
-  price: string;
-  inventory: string;
+  price: string | number;
+  inventory: string | number;
   productId?: string;
 }
 export interface CreateProductDto {

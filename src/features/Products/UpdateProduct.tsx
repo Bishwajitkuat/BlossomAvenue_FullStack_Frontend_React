@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useGetAllCatagories from "../../hooks/useGetAllCatagories";
 import {
   CreateUpdateProductCategoryDto,
   ProductCreateUpdateImage,
   ProductCreateUpdateVariation,
 } from "../../utils/types/product";
 import toast from "react-hot-toast";
-import useGetAllCatagories from "../../hooks/useGetAllCatagories";
 import Loader from "../../components/ui/Loader";
 import Error from "../../components/ui/Error";
-import useCreateProduct from "../../hooks/products/useCreateProduct";
+import useGetProductById from "../../hooks/products/useGetProductById";
+import useUpdateProduct from "../../hooks/products/useUpdateProduct";
 
-function CreateProductForm() {
-  const {
-    isCategoriesLoading,
-    categories,
-    isCategoriesError,
-    categoriesError,
-  } = useGetAllCatagories();
-  const { isCreateProductLoading, createProduct } = useCreateProduct();
+function UpdateProduct() {
+  const { isCategoriesLoading, categories, categoriesError } =
+    useGetAllCatagories();
+  const { isUpdatingProductPending, updateProduct } = useUpdateProduct();
+  const { isProductLoading, error, product } = useGetProductById();
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -38,6 +36,16 @@ function CreateProductForm() {
   const [productCategories, setProductCategories] = useState<
     CreateUpdateProductCategoryDto[]
   >([newProductCategory]);
+
+  useEffect(() => {
+    if (product) {
+      setTitle(product.title);
+      setDescription(product.description);
+      setImages(product.images);
+      setVariations(product.variations);
+      setProductCategories(product.productCategories);
+    }
+  }, [product]);
 
   const handleAddNewImage = () => {
     const newImages = [...images, newImage];
@@ -118,20 +126,34 @@ function CreateProductForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newProduct = {
+    const updatedProduct = {
       title,
       description,
       images,
       variations,
       productCategories,
     };
-    createProduct(newProduct);
+    updateProduct(updatedProduct);
   };
 
-  if (isCategoriesLoading || !categories || isCreateProductLoading)
+  if (
+    isCategoriesLoading ||
+    !categories ||
+    isUpdatingProductPending ||
+    isProductLoading ||
+    !product
+  )
     return <Loader />;
-  if (isCategoriesError || categoriesError)
-    return <Error message={"Failed to load product categories"} />;
+  if (categoriesError || error)
+    return (
+      <Error
+        message={
+          categoriesError?.message ||
+          error?.message ||
+          "Ops! error occurred during data fetching"
+        }
+      />
+    );
 
   return (
     <div className="flex justify-center">
@@ -141,7 +163,7 @@ function CreateProductForm() {
             <div className="flex items-center py-8 text-2xl">
               <div className="flex h-full items-center justify-center  px-2"></div>
               <h3 className="text-2xl tracking-widest font-semibold ">
-                Create New Product
+                Update Product
               </h3>
             </div>
             <div className="flex items-center rounded-full bg-pink-100">
@@ -333,7 +355,7 @@ function CreateProductForm() {
               type="submit"
               className="w-[20rem]  rounded-full bg-pink-300 px-12 py-8 font-semibold uppercase tracking-widest shadow-sm shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-400 "
             >
-              Create Product
+              Update Product
             </button>
           </div>
         </form>
@@ -342,4 +364,4 @@ function CreateProductForm() {
   );
 }
 
-export default CreateProductForm;
+export default UpdateProduct;
