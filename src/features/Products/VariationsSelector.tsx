@@ -40,7 +40,7 @@ const VariationsSelector = ({
               <span className="text-gray-700">{v.variationName}</span>
             </div>
             <span className="text-pink-500 font-semibold">
-              € {v.price.toFixed(2)}
+              € {v?.price?.toFixed(2)}
             </span>
           </label>
         ))}
