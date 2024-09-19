@@ -199,7 +199,7 @@ function CreateProductForm() {
                 </div>
                 <div className="flex justify-end gap-4 py-4">
                   <button
-                    className="min-h-[3rem] rounded-xl bg-lime-300 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-300/50 hover:shadow-lime-200/50"
+                    className="min-h-[3rem] rounded-xl bg-lime-100 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-50 hover:shadow-lime-200/50"
                     type="button"
                     onClick={handleAddNewImage}
                   >
@@ -273,7 +273,7 @@ function CreateProductForm() {
                 </div>
                 <div className="flex justify-end gap-4 py-4">
                   <button
-                    className="min-h-[3rem] rounded-xl bg-lime-300 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-300/50 hover:shadow-lime-200/50"
+                    className="min-h-[3rem] rounded-xl bg-lime-100 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-50 hover:shadow-lime-200/50"
                     type="button"
                     onClick={handelAddNewVari}
                   >
@@ -298,6 +298,7 @@ function CreateProductForm() {
                   name="categoryId"
                   id="categoryId"
                   onChange={(e) => handelProductCategory(e, index)}
+                  value={productCategories[index].categoryId}
                   className="bg-pink-100 py-4 px-8 tracking-widest shadow-sm shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-200 rounded-md"
                 >
                   <option value="">Categories</option>
@@ -310,7 +311,7 @@ function CreateProductForm() {
                 </select>
                 <div className="flex justify-end gap-4 py-4">
                   <button
-                    className="min-h-[3rem] rounded-xl bg-lime-300 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-300/50 hover:shadow-lime-200/50"
+                    className="min-h-[3rem] rounded-xl bg-lime-100 px-4 py-2 uppercase  shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-lime-50 hover:shadow-lime-200/50"
                     type="button"
                     onClick={handelAddProductCategory}
                   >
@@ -327,7 +328,14 @@ function CreateProductForm() {
               </div>
             ))}
           </div>
-          <button type="submit">Create Product</button>
+          <div className="flex justify-center my-12">
+            <button
+              type="submit"
+              className="w-[20rem]  rounded-full bg-pink-300 px-12 py-8 font-semibold uppercase tracking-widest shadow-sm shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-400 "
+            >
+              Create Product
+            </button>
+          </div>
         </form>
       </div>
     </div>
