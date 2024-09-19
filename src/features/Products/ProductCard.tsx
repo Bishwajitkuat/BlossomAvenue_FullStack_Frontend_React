@@ -24,13 +24,13 @@ function ProductCard({ product }: { product: GetAllProductReadDto }) {
         <div className="flex items-center gap-2 px-2">
           <StarIcon />
           <p className="text-2xl font-semibold tracking-wider">
-            Rating: {product.avgStar ? product.avgStar.toFixed(1) : 0}
+            Rating: {product?.avgStar ? product?.avgStar?.toFixed(1) : 0}
           </p>
         </div>
         <div className="flex items-center gap-2 px-2">
           <BankNoteIcon />
           <p className="text-2xl font-semibold tracking-wider">
-            <span>Price: </span> {product.minPrice.toFixed(2)}€
+            <span>Price: </span> {product?.minPrice?.toFixed(2)}€
           </p>
         </div>
         <div className="flex items-center gap-2 px-2">

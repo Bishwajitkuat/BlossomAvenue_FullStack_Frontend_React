@@ -26,13 +26,16 @@ const LoginForm = () => {
               <div className="flex h-full items-center justify-center  px-2">
                 <ParsonIcon />
               </div>
-              <label className="min-w-[5rem] border-e border-pink-400 py-3 pe-2">
+              <label
+                htmlFor="username"
+                className="min-w-[5rem] border-e border-pink-400 py-3 pe-2"
+              >
                 Username
               </label>
               <input
                 className="w-full rounded-full rounded-s bg-pink-50 px-2 py-3 outline-none placeholder:text-zinc-400 focus:ring-2 focus:ring-orange-400 focus:ring-opacity-30"
                 type="text"
-                name="customer"
+                name="username"
                 placeholder="user name"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
