@@ -1,25 +1,26 @@
 import { useQueryClient } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import useGetProducts from "../../hooks/products/useGetProducts";
 import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "../../components/ui/Loader";
 import FilterProduct from "./FilterProduct";
-import AllProducts from "./AllProducts";
 import Pagination from "../../components/Pagination";
 import { Link } from "react-router-dom";
+import useDeleteProduct from "../../hooks/products/useDeleteProduct";
 
 function AdminProducts() {
   const queryClient = useQueryClient();
   const { isProductsLoading, isError, error, paginatedProducts } =
     useGetProducts();
   const [searchParams] = useSearchParams();
+  const { isProductDeletePending, deleteProduct } = useDeleteProduct();
 
   useEffect(() => {
     if (isError && error) toast.error(error.message);
     queryClient.invalidateQueries({ queryKey: ["products"] });
   }, [isError, searchParams, queryClient, error]);
-  if (isProductsLoading) return <Loader />;
+  if (isProductsLoading || isProductDeletePending) return <Loader />;
   return (
     <div className="h-full flex flex-col max-w-[1280px] mx-auto">
       <div>
@@ -56,7 +57,10 @@ function AdminProducts() {
                   >
                     <button>Update</button>
                   </Link>
-                  <button className="border-2 border-red-400/30 rounded-md px-4 py-2 shadow-md hover:bg-red-300/30">
+                  <button
+                    onClick={() => deleteProduct(p.productId)}
+                    className="border-2 border-red-400/30 rounded-md px-4 py-2 shadow-md hover:bg-red-300/30"
+                  >
                     Delete
                   </button>
                 </div>
