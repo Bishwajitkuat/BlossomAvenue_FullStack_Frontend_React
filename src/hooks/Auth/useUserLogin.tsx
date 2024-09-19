@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const useUserLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/user";
+  const from = location.state?.from?.pathname || "/products";
   const { setToLocalStorage } = useSetAuthToLocalStorage();
 
   const { isPending: isLoading, mutate: login } = useMutation({

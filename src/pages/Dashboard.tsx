@@ -47,7 +47,7 @@ function Dashboard() {
         </ul>
       </nav>
 
-      <div className="col-span-6">
+      <div className="col-span-6 w-full">
         <Outlet />
       </div>
     </div>

@@ -2,7 +2,6 @@ import { useGetAuthFromLocalStorage } from "./useGetAuthFromLocalStorage";
 import { useMutation } from "@tanstack/react-query";
 import { getRefreshToken } from "../../services/api/authentication";
 import useSetAuthToLocalStorage from "./useSetAuthToLocalStorage";
-import toast from "react-hot-toast";
 
 function useRefreshToken() {
   const { userAuth } = useGetAuthFromLocalStorage();
@@ -13,7 +12,7 @@ function useRefreshToken() {
     onSuccess: (data) => {
       setToLocalStorage(data);
     },
-    onError: (error) => toast.error(error.message),
+    //onError: (error) => toast.error(error.message),
   });
 
   return { isPending, getNewAccessToken };
