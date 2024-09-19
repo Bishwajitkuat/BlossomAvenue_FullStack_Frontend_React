@@ -4,10 +4,12 @@ import Loader from "../../components/ui/Loader";
 import useGetAllOrdersByAdmin from "../../hooks/Order/useGetAllOrdersByAdmin";
 import toast from "react-hot-toast";
 import useUpdateOrderStatus from "../../hooks/Order/useUpdateOrderStatus";
+import useDeleteOrder from "../../hooks/Order/useDeleteOrder";
 
 function AdminOrders() {
   const { isOrdersLoading, orderError, orders } = useGetAllOrdersByAdmin();
   const { isOrderStatusPending, updateOrderStatus } = useUpdateOrderStatus();
+  const { isOrderDeletePending, deleteOrder } = useDeleteOrder();
   const [orderStatus, setOrderStatus] = useState<string>("");
 
   const handelUpdate = (orderId: string) => {
@@ -21,7 +23,8 @@ function AdminOrders() {
       updateOrderStatus(updatedOrder);
     }
   };
-  if (isOrdersLoading || isOrderStatusPending) return <Loader />;
+  if (isOrdersLoading || isOrderStatusPending || isOrderDeletePending)
+    return <Loader />;
   if (orderError)
     return <Error message={orderError?.message || "Failed to fetch orders."} />;
   return (
@@ -94,13 +97,14 @@ function AdminOrders() {
                 <button
                   type="button"
                   onClick={() => handelUpdate(o.orderId)}
-                  disabled={isOrderStatusPending}
+                  disabled={isOrderStatusPending || isOrderDeletePending}
                   className="border-2 border-lime-300/50 bg-lime-200/30 rounded-md px-4 py-2 shadow-md hover:bg-lime-100"
                 >
                   Save
                 </button>
                 <button
-                  disabled={isOrderStatusPending}
+                  onClick={() => deleteOrder(o.orderId)}
+                  disabled={isOrderStatusPending || isOrderDeletePending}
                   className="border-2 border-red-400/30 bg-orange-200 rounded-md px-4 py-2 shadow-md hover:bg-red-400"
                 >
                   Delete
