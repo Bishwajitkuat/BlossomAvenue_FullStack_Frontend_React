@@ -18,6 +18,7 @@ import CreateProduct from "./pages/CreateProduct";
 import Orders from "./pages/Orders";
 import AdminProducts from "./features/Products/AdminProducts";
 import UpdateProduct from "./features/Products/UpdateProduct";
+import AdminOrders from "./features/Order/AdminOrders";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,6 +63,7 @@ const App = () => {
                     path="products/update/:productId"
                     element={<UpdateProduct />}
                   />
+                  <Route path="orders" element={<AdminOrders />} />
                 </Route>
                 <Route path="admin" element={<AdminProtectedRoutes />}>
                   <Route
