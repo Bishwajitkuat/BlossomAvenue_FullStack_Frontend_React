@@ -24,10 +24,10 @@ The backend project is deployed too. You can find the API documentation from the
 
 [The Swagger documentation](https://blossomavenue-f2grfmdmepbcb4es.northeurope-01.azurewebsites.net/index.html)
 
-<img style="height:250px" src="screen_shots/Screenshot_0.png">
-<img style="height:250px" src="screen_shots/Screenshot_1.png">
-<img style="height:250px" src="screen_shots/Screenshot_2.png">
-<img style="height:250px" src="screen_shots/Screenshot_3.png">
+<img style="width:250px" src="screen_shots/Screenshot_0.png">
+<img style="width:250px" src="screen_shots/Screenshot_1.png">
+<img style="width:250px" src="screen_shots/Screenshot_2.png">
+<img style="width:250px" src="screen_shots/Screenshot_3.png">
 
 ### Key Features
 
