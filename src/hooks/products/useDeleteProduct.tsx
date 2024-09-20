@@ -2,6 +2,7 @@ import useAxiosPrivate from "../useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useDeleteProduct() {
   const axiosPrivate = useAxiosPrivate();
@@ -18,7 +19,8 @@ function useDeleteProduct() {
         toast.success("Product is deleted successfully!");
         navigation(`/user/employee/products`);
       },
-      onError: (err) => toast(err.message),
+      onError: (err: AxiosError) =>
+        toast.error(JSON.stringify(err?.response?.data)),
     });
   return { isProductDeletePending, deleteProduct };
 }

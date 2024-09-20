@@ -3,6 +3,7 @@ import useSetAuthToLocalStorage from "./useSetAuthToLocalStorage";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth } from "../../services/api/authentication";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 const useUserLogin = () => {
   const navigate = useNavigate();
@@ -17,9 +18,8 @@ const useUserLogin = () => {
       setToLocalStorage(data);
       navigate(from, { replace: true });
     },
-    onError: (error) => {
-      toast.error(error.message);
-    },
+    onError: (err: AxiosError) =>
+      toast.error(JSON.stringify(err?.response?.data)),
   });
 
   return { isLoading, login };

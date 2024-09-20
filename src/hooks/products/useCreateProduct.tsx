@@ -4,6 +4,7 @@ import {
 } from "../../utils/types/product";
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +25,8 @@ function useCreateProduct() {
         toast.success("Product is added successfully!");
         navigation(`/products/${data.productId}`);
       },
-      onError: (err) => toast(err.message),
+      onError: (err: AxiosError) =>
+        toast.error(JSON.stringify(err?.response?.data)),
     });
   return { isCreateProductLoading, createProduct };
 }

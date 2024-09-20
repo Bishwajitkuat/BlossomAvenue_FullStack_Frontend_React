@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useUserLogout() {
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ function useUserLogout() {
       localStorage.removeItem("blossom_avenue_user_auth");
       navigate("/login");
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err: AxiosError) =>
+      toast.error(JSON.stringify(err?.response?.data)),
   });
   return { isLoading, logout };
 }

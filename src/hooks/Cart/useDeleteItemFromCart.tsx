@@ -2,6 +2,7 @@ import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ReadCartDto } from "../../utils/types/cart";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useDeleteItemFromCart() {
   const axiosPrivate = useAxiosPrivate();
@@ -19,7 +20,8 @@ function useDeleteItemFromCart() {
         toast.success("Teh item id deleted from the cart successfully!");
         queryClient.invalidateQueries({ queryKey: ["cart"] });
       },
-      onError: (err) => toast.error(err.message),
+      onError: (err: AxiosError) =>
+        toast.error(JSON.stringify(err?.response?.data)),
     });
   return { isDeleteItemFromCartLoading, deleteItemFromCart };
 }
