@@ -19,6 +19,8 @@ import Orders from "./pages/Orders";
 import AdminProducts from "./features/Products/AdminProducts";
 import UpdateProduct from "./features/Products/UpdateProduct";
 import AdminOrders from "./features/Order/AdminOrders";
+import Users from "./features/users/Users";
+import AdminUpdateUser from "./features/users/AdminUpdateUser";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -70,10 +72,10 @@ const App = () => {
                     path=""
                     element={<h1>Admin dashboard not implemented yet</h1>}
                   />
-                  <Route path="users" element={<h1>not implemented yet</h1>} />
+                  <Route path="users" element={<Users />} />
                   <Route
                     path="users/update/:userId"
-                    element={<h1>not implemented yet</h1>}
+                    element={<AdminUpdateUser />}
                   />
                 </Route>
               </Route>
