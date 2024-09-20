@@ -28,3 +28,16 @@ export interface ReadUserProfileDto {
   userContactNumbers: ReadUserContactNumberDto[];
   userAddresses: ReadUserAddressDto[];
 }
+
+export interface ReadUserDto {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  userName: string;
+  userRole: string;
+  isUserActive: boolean | null;
+  createdAt: string | null;
+  userContactNumbers: ReadUserContactNumberDto[];
+  userAddresses: ReadUserAddressDto[];
+}
