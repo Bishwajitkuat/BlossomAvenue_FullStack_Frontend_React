@@ -1,5 +1,6 @@
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
 function useDeleteUserByAdmin() {
@@ -16,7 +17,8 @@ function useDeleteUserByAdmin() {
       queryClient.invalidateQueries({ queryKey: ["users", "admin"] });
       toast.success("The user is deleted successfully!");
     },
-    onError: (err) => toast(err.message),
+    onError: (err: AxiosError) =>
+      toast.error(JSON.stringify(err?.response?.data)),
   });
   return { isUserDeletePending, deleteUser };
 }

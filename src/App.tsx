@@ -21,6 +21,7 @@ import UpdateProduct from "./features/Products/UpdateProduct";
 import AdminOrders from "./features/Order/AdminOrders";
 import Users from "./features/users/Users";
 import AdminUpdateUser from "./features/users/AdminUpdateUser";
+import UserRegistration from "./pages/UserRegistration";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +40,7 @@ const App = () => {
           <Route element={<AppLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<UserRegistration />} />
             <Route path="products" element={<Products />} />
             <Route path="products/:productId" element={<Product />} />
             <Route path="user" element={<ProtectedRoutes />}>

@@ -1,5 +1,6 @@
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
 function useDeleteOrder() {
@@ -16,7 +17,8 @@ function useDeleteOrder() {
       queryClient.invalidateQueries({ queryKey: ["orders", "admin"] });
       toast.success("The order is deleted successfully!");
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err: AxiosError) =>
+      toast.error(JSON.stringify(err?.response?.data)),
   });
 
   return { isOrderDeletePending, deleteOrder };

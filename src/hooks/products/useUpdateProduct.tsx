@@ -6,6 +6,7 @@ import {
 } from "../../utils/types/product";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useUpdateProduct() {
   const axiosPrivate = useAxiosPrivate();
@@ -24,7 +25,8 @@ function useUpdateProduct() {
         toast.success("Product is updated successfully!");
         navigation(`/products/${data.productId}`);
       },
-      onError: (err) => toast(err.message),
+      onError: (err: AxiosError) =>
+        toast.error(JSON.stringify(err?.response?.data)),
     });
   return { isUpdatingProductPending, updateProduct };
 }

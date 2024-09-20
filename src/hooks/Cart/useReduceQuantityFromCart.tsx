@@ -2,6 +2,7 @@ import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateCartItemsDto, ReadCartDto } from "../../utils/types/cart";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useReduceQuantityFromCart() {
   const axiosPrivate = useAxiosPrivate();
@@ -19,7 +20,7 @@ function useReduceQuantityFromCart() {
         toast.success("Item amount is reduced by 1.");
         queryClient.invalidateQueries({ queryKey: ["cart"] });
       },
-      onError: (err) => toast.error(err.message),
+      onError: (err: AxiosError) => toast.error(JSON.stringify(err?.response?.data)),
     });
 
   return { isReduceQtyLoading, reduceQtyByOneFromCart };

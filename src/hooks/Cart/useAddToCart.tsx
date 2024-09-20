@@ -2,6 +2,7 @@ import useAxiosPrivate from "../useAxiosPrivate";
 import { CreateCartItemsDto, ReadCartDto } from "../../utils/types/cart";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 function useAddToCart() {
   const axiosPrivate = useAxiosPrivate();
@@ -19,7 +20,8 @@ function useAddToCart() {
       toast.success("Item added to cart successfully!");
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err: AxiosError) =>
+      toast.error(JSON.stringify(err?.response?.data)),
   });
   return { isAddToCartLoading, addToCart };
 }

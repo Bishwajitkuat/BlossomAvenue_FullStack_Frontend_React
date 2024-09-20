@@ -1,6 +1,7 @@
 import useAxiosPrivate from "../useAxiosPrivate";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
 function useUpdateOrderStatus() {
@@ -25,7 +26,8 @@ function useUpdateOrderStatus() {
         queryClient.invalidateQueries({ queryKey: ["orders", "admin"] });
         toast.success("The order status is updated successfully!");
       },
-      onError: (err) => toast.error(err.message),
+      onError: (err: AxiosError) =>
+        toast.error(JSON.stringify(err?.response?.data)),
     });
 
   return { isOrderStatusPending, updateOrderStatus };

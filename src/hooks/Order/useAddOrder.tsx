@@ -3,6 +3,7 @@ import { CreateOrderDto, ReadOrderDto } from "../../utils/types/order";
 import useAxiosPrivate from "../useAxiosPrivate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
 
 function useAddOrder() {
   const axiosPrivate = useAxiosPrivate();
@@ -20,7 +21,7 @@ function useAddOrder() {
       toast.success("The order is placed successfully!");
       navigate(`/user/orders`);
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err: AxiosError) => toast.error(JSON.stringify(err?.response?.data)),
   });
 
   return { isAddOrderLoading, addNewOrder };

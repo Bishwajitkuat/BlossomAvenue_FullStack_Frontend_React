@@ -41,3 +41,17 @@ export interface ReadUserDto {
   userContactNumbers: ReadUserContactNumberDto[];
   userAddresses: ReadUserAddressDto[];
 }
+
+export interface CreateUserProfileDto {
+  firstName: string;
+  lastName: string;
+  email: string;
+  contactNumbers: string[];
+  addressLine1: string;
+  addressLine2: string | null;
+  postCode: string;
+  city: string;
+  country: string;
+  password: string;
+  userName: string;
+}
