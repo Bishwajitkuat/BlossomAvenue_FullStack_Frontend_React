@@ -14,7 +14,6 @@ function ProductDetail() {
   const { isProductLoading, isError, error, product } = useGetProductById();
   const { isAddToCartLoading, addToCart } = useAddToCart();
   const [selectedVariation, setSelectedVariation] = useState<string>();
-  const { isReviewLoading, addNewReview } = useAddProductReview();
   const [showReviewForm, setShowReviewForm] = useState<boolean>(false);
 
   const handelAddToCart = () => {
@@ -31,7 +30,7 @@ function ProductDetail() {
 
   useEffect(() => {
     if (isError && error) toast.error(error.message);
-  }, [isError, error, isReviewLoading, addNewReview]);
+  }, [isError, error]);
   if (isProductLoading || isAddToCartLoading) return <Loader />;
   if (product === undefined || null) return <NotAvailable item={"product"} />;
   return (

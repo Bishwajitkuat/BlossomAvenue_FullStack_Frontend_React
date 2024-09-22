@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useAddProductReview from "../../hooks/products/useAddProductReview";
-import Loader from "../../components/ui/Loader";
 import { useGetAuthFromLocalStorage } from "../../hooks/Auth/useGetAuthFromLocalStorage";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -9,11 +8,10 @@ function AddProductReview({ productId }: { productId: string | undefined }) {
   const { userAuth } = useGetAuthFromLocalStorage();
   const navigate = useNavigate();
   const location = useLocation();
+
   const { isReviewLoading, addNewReview } = useAddProductReview();
   const [review, setReview] = useState<string>("");
   const [star, setStar] = useState<string>("1");
-
-  if (isReviewLoading) return <Loader />;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,6 +26,7 @@ function AddProductReview({ productId }: { productId: string | undefined }) {
       userId: null,
       productId: productId ? productId : null,
     });
+    navigate(`/products/${productId}`);
   };
   return (
     <form
@@ -65,7 +64,7 @@ function AddProductReview({ productId }: { productId: string | undefined }) {
         className="w-full  rounded-b-md bg-pink-300 px-12 py-3 font-semibold uppercase tracking-widest shadow-md shadow-zinc-500 outline-none duration-200 ease-in hover:bg-pink-500 "
         type="submit"
       >
-        Add
+        {isReviewLoading ? "Adding...." : "Add"}
       </button>
     </form>
   );
