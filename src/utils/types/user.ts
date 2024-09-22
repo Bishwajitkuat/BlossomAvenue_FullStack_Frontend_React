@@ -55,3 +55,34 @@ export interface CreateUserProfileDto {
   password: string;
   userName: string;
 }
+
+// user profile update
+
+export interface UpdateUserProfileDto {
+  userId: string;
+  firstName: string | null;
+  lastName: string | null;
+  userContactNumbers: UpdateUserContactNumber[] | null;
+  userAddresses: UpdateUserAddress[] | null;
+}
+
+export interface UpdateUserContactNumber {
+  contactNumberId: string | null;
+  contactNumber: string;
+}
+
+export interface UpdateUserAddress {
+  userAddressId: string | null;
+  defaultAddress: boolean | null;
+  address: UpdateAddressDetail;
+}
+
+export interface UpdateAddressDetail {
+  addressDetailId: string | null;
+  fullName: string;
+  addressLine1: string;
+  addressLine2: string | null;
+  postCode: string;
+  city: string;
+  country: string;
+}

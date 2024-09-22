@@ -50,14 +50,6 @@ const App = () => {
                 <Route path="createOrder" element={<CreateOrderPage />} />
                 <Route path="orders" element={<Orders />} />
                 <Route
-                  path="orders/:orderId"
-                  element={<h1>not implemented yet</h1>}
-                />
-                <Route
-                  path="orders/create"
-                  element={<h1>not implemented yet</h1>}
-                />
-                <Route
                   path="employee"
                   element={<EmployeeAdminProtectedRoutes />}
                 >
@@ -70,15 +62,7 @@ const App = () => {
                   <Route path="orders" element={<AdminOrders />} />
                 </Route>
                 <Route path="admin" element={<AdminProtectedRoutes />}>
-                  <Route
-                    path=""
-                    element={<h1>Admin dashboard not implemented yet</h1>}
-                  />
                   <Route path="users" element={<Users />} />
-                  <Route
-                    path="users/update/:userId"
-                    element={<AdminUpdateUser />}
-                  />
                 </Route>
               </Route>
             </Route>
