@@ -25,11 +25,6 @@ const Header = () => {
           <li className="flex items-center justify-center">
             <Link to="/user">Dashboard</Link>
           </li>
-          <li className="flex items-center justify-center">
-            <Link to="/user/cart">
-              {userAuth ? <CartIconWithItemNumber /> : <CartIcon />}
-            </Link>
-          </li>
           {!userAuth?.isAuthenticated && (
             <li className="flex items-center justify-center">
               <Link to="/login">Login</Link>
@@ -40,8 +35,15 @@ const Header = () => {
               <button onClick={() => logout()}>Logout</button>
             </li>
           )}
-          <li>
-            <Link to={"/signup"}>SingUp</Link>
+          {!userAuth?.isAuthenticated && (
+            <li className="flex items-center justify-center">
+              <Link to={"/signup"}>SingUp</Link>
+            </li>
+          )}
+          <li className="flex items-center justify-center">
+            <Link to="/user/cart">
+              {userAuth ? <CartIconWithItemNumber /> : <CartIcon />}
+            </Link>
           </li>
         </ul>
       </nav>
