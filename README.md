@@ -6,6 +6,13 @@
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
+## Table of content
+
+- [Overview](#overview)
+- [Live Demo](#live-demo)
+- [Key Features](#key-features)
+- [Technologies Used](#technologies-used)
+
 ## Overview
 
 This project is the Front service for Blossom Avenue which is a flower shop application, developed using React, Typescript, React-Query and Tailwindcss. This user interface various functionalities including user management, product management, and order processing. The system supports three types of users: **Admin**, **Employee** and **Customer**.
@@ -76,4 +83,5 @@ The backend project is deployed too. You can find the API documentation from the
 - **React**
 - **Typescript**
 - **React Query**
+- **React Router**
 - **Tailwindcss**
