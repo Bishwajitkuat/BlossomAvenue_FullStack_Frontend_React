@@ -12,6 +12,7 @@
 - [Live Demo](#live-demo)
 - [Key Features](#key-features)
 - [Technologies Used](#technologies-used)
+- [Folder Structure](#folder-structure)
 
 ## Overview
 
@@ -76,7 +77,154 @@ The backend project is deployed too. You can find the API documentation from the
     - Such as change status, shipping address.
 
 - **Product Reviews**:
+
   - Customers can create, update, delete, and view reviews for products.
+
+### Folder Structure
+
+```bash
+.
+├── App.tsx
+├── components
+│   ├── ImageCarousel.tsx
+│   ├── NotAvailable.tsx
+│   ├── Pagination.tsx
+│   └── ui
+│       ├── Error.tsx
+│       ├── icons
+│       │   ├── BankNoteIcon.tsx
+│       │   ├── CartIcon.tsx
+│       │   ├── LockIcon.tsx
+│       │   ├── MapPinIcon.tsx
+│       │   ├── ParsonIcon.tsx
+│       │   ├── StarIcon.tsx
+│       │   ├── StockIcon.tsx
+│       │   └── TrashCanIcon.tsx
+│       └── Loader.tsx
+├── features
+│   ├── Authentications
+│   │   └── LoginForm.tsx
+│   ├── Authorizations
+│   │   ├── AdminProtectedRoutes.tsx
+│   │   ├── EmployeeAdminProtectedRoutes.tsx
+│   │   ├── ProtectedRoutes.tsx
+│   │   └── RestrictedAccess.tsx
+│   ├── Cart
+│   │   ├── CartDetail.tsx
+│   │   ├── CartIconWithItemNumber.tsx
+│   │   ├── CartItems.tsx
+│   │   └── NoItemInCart.tsx
+│   ├── Home
+│   │   └── LandingBanner.tsx
+│   ├── Order
+│   │   ├── AdminOrders.tsx
+│   │   ├── AllOrders.tsx
+│   │   ├── CreateOrder.tsx
+│   │   ├── OrderDetail.tsx
+│   │   ├── OrderItems.tsx
+│   │   └── ShippingAddress.tsx
+│   ├── Products
+│   │   ├── AddProductReview.tsx
+│   │   ├── AdminProducts.tsx
+│   │   ├── AllProducts.tsx
+│   │   ├── CreateProductForm.tsx
+│   │   ├── FilterProduct.tsx
+│   │   ├── ProductCard.tsx
+│   │   ├── ProductDetail.tsx
+│   │   ├── ProductReviews.tsx
+│   │   ├── UpdateProduct.tsx
+│   │   └── VariationsSelector.tsx
+│   └── users
+│       ├── AdminUpdateUser.tsx
+│       ├── UserProfile.tsx
+│       ├── UsersTable.tsx
+│       ├── Users.tsx
+│       └── UserUpdateForm.tsx
+├── hooks
+│   ├── Auth
+│   │   ├── useGetAuthFromLocalStorage.tsx
+│   │   ├── useRefreshToken.tsx
+│   │   ├── useSetAuthToLocalStorage.tsx
+│   │   ├── useUserLogin.tsx
+│   │   ├── useUserLogout.tsx
+│   │   └── useUserRegistration.tsx
+│   ├── Cart
+│   │   ├── useAddToCart.tsx
+│   │   ├── useClearCart.tsx
+│   │   ├── useDeleteItemFromCart.tsx
+│   │   ├── useGetCart.tsx
+│   │   └── useReduceQuantityFromCart.tsx
+│   ├── Order
+│   │   ├── useAddOrder.tsx
+│   │   ├── useDeleteOrder.tsx
+│   │   ├── useGetAllOrdersByAdmin.tsx
+│   │   ├── useGetAllOrders.tsx
+│   │   └── useUpdateOrderStatus.tsx
+│   ├── products
+│   │   ├── useAddProductReview.tsx
+│   │   ├── useCreateProduct.tsx
+│   │   ├── useDeleteProduct.tsx
+│   │   ├── useGetLatestProducts.tsx
+│   │   ├── useGetProductById.tsx
+│   │   ├── useGetProducts.tsx
+│   │   └── useUpdateProduct.tsx
+│   ├── useAxiosPrivate.tsx
+│   ├── useDebounce.tsx
+│   ├── useGetAllCatagories.tsx
+│   └── User
+│       ├── useDeleteUserByAdmin.tsx
+│       ├── useGetAllUsersByAdmin.tsx
+│       ├── useGetUserProfile.tsx
+│       ├── useUpdateProfile.tsx
+│       └── useUpdateUserByAdmin.tsx
+├── index.css
+├── index.tsx
+├── layout
+│   ├── AppLayout.tsx
+│   ├── Footer.tsx
+│   └── Header.tsx
+├── pages
+│   ├── Cart.tsx
+│   ├── CreateOrderPage.tsx
+│   ├── CreateProduct.tsx
+│   ├── Dashboard.tsx
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── Orders.tsx
+│   ├── Products.tsx
+│   ├── Product.tsx
+│   ├── Profile.tsx
+│   └── UserRegistration.tsx
+├── react-app-env.d.ts
+├── reportWebVitals.ts
+├── services
+│   ├── api
+│   │   ├── authentication.ts
+│   │   └── axios.ts
+│   └── zod
+├── setupTests.ts
+├── store
+├── test
+│   ├── components
+│   │   ├── appRender.tsx
+│   │   └── components
+│   │       ├── Error.test.tsx
+│   │       ├── ImageCarousel.test.tsx
+│   │       └── NotAvailable.test.tsx
+│   └── features
+│       ├── CartDetail.test.tsx
+│       ├── LandingBanner.test.tsx
+│       ├── LoginForm.test.tsx
+│       └── ProductDetail.test.tsx
+└── utils
+    └── types
+        ├── authentication.ts
+        ├── cart.ts
+        ├── order.ts
+        ├── pagination.ts
+        ├── product.ts
+        └── user.ts
+```
 
 ### Technologies Used
 
@@ -84,4 +232,5 @@ The backend project is deployed too. You can find the API documentation from the
 - **Typescript**
 - **React Query**
 - **React Router**
+- **React Testing Library**
 - **Tailwindcss**
