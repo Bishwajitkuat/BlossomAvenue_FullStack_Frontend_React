@@ -10,6 +10,7 @@
 
 - [Overview](#overview)
 - [Live Demo](#live-demo)
+- [Backend Repo and API doc](#backend-links)
 - [Key Features](#key-features)
 - [Technologies Used](#technologies-used)
 - [Folder Structure](#folder-structure)
@@ -28,9 +29,12 @@ The project is deployed you can visit in the following link.
 
 [Blossom Avenue](https://blossomavenue.vercel.app/)
 
+### Backend Links
+
 The backend project is deployed too. You can find the API documentation from the following link.
 
-[The Swagger documentation](https://blossomavenue-f2grfmdmepbcb4es.northeurope-01.azurewebsites.net/index.html)
+- [Swagger API documentation](https://blossomavenue-f2grfmdmepbcb4es.northeurope-01.azurewebsites.net/index.html)
+- [Backend repo](https://github.com/Bishwajitkuat/BlossomAvenue_FullStack_Backend_CSharp.git)
 
 <img style="width:250px" src="screen_shots/Screenshot_0.png">
 <img style="width:250px" src="screen_shots/Screenshot_1.png">
